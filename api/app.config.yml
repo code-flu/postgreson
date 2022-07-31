@@ -1,0 +1,29 @@
+logging:
+  # The default level of all loggers. Can be OFF, ERROR, WARN, INFO, DEBUG, TRACE, or ALL.
+  level: ${APP_LOG_LEVEL:-INFO}
+  appenders:
+    - type: console
+      logFormat: "%-30(%d{HH:mm:ss.SSS} [%thread]) %-5level %logger{32} - %msg%n"
+
+server:
+  applicationContextPath: /postgreson
+  rootPath: /api/v1
+  # APIs
+  applicationConnectors:
+    - type: http
+      bindHost: 0.0.0.0
+      port: 8080
+  # Metrics
+  adminConnectors:
+    - type: http
+      port: 8081
+
+db:
+  driverClass: org.postgresql.Driver
+  url: ${APP_DB_URI:-jdbc:postgresql://127:0:0:1:5432/postgreson}
+  user: ${APP_DB_USER:-postgres}
+  password: ${APP_DB_PASSWORD:-postgres}
+  minSize: 1
+  maxSize: ${APP_DB_TASKS_POOL_MAX_SIZE:-2}
+  minIdleTime: ${APP_DB_POOL_MIN_IDLE:-1 minute}
+  evictionInterval: 10s

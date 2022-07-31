@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.codeflu</groupId>
+    <artifactId>postgreson</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <modules>
+        <module>core</module>
+        <module>api</module>
+    </modules>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>Maven Repository Switchboard</name>
+            <layout>default</layout>
+            <url>https://repo1.maven.org/maven2</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <dropwizard.version>2.1.1</dropwizard.version>
+        <jdbi3.version>3.32.0</jdbi3.version>
+        <jdbi3.jackson2.version>3.29.0</jdbi3.jackson2.version>
+        <postgresql.version>42.4.0</postgresql.version>
+        <flywaydb.version>6.1.1</flywaydb.version>
+        <lombok.version>1.18.24</lombok.version>
+        <jackson.version>2.13.3</jackson.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Dropwizard -->
+            <dependency>
+                <groupId>io.dropwizard</groupId>
+                <artifactId>dropwizard-core</artifactId>
+                <version>${dropwizard.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.dropwizard</groupId>
+                <artifactId>dropwizard-views</artifactId>
+                <version>${dropwizard.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.dropwizard</groupId>
+                <artifactId>dropwizard-assets</artifactId>
+                <version>${dropwizard.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.dropwizard</groupId>
+                <artifactId>dropwizard-jdbi3</artifactId>
+                <version>${dropwizard.version}</version>
+            </dependency>
+            <!-- /Dropwizard -->
+
+            <!-- db -->
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${postgresql.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-core</artifactId>
+                <version>${flywaydb.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jdbi</groupId>
+                <artifactId>jdbi3-postgres</artifactId>
+                <version>${jdbi3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jdbi</groupId>
+                <artifactId>jdbi3-sqlobject</artifactId>
+                <version>${jdbi3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jdbi</groupId>
+                <artifactId>jdbi3-jackson2</artifactId>
+                <version>${jdbi3.jackson2.version}</version>
+            </dependency>
+            <!-- /db -->
+
+            <!-- Jackson -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <!-- /Jackson -->
+
+            <!-- Lombok -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>compile</scope>
+            </dependency>
+            <!-- /Lombok -->
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <!-- Do not generate a source jar -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <configuration>
+                    <skipSource>true</skipSource>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <release>11</release>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+</project>

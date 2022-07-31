@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  postgres:
+    container_name: postgreson-db
+    image: postgres:12-alpine
+    command: "postgres -c fsync=off -c full_page_writes=off -c synchronous_commit=OFF"
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+      POSTGRES_DB: postgreson
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
