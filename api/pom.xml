@@ -10,7 +10,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>api</artifactId>
+    <artifactId>postgreson-api</artifactId>
     <packaging>jar</packaging>
 
     <properties>
@@ -20,6 +20,14 @@
     </properties>
 
     <dependencies>
+        <!-- Postgreson-core -->
+        <dependency>
+            <groupId>com.codeflu</groupId>
+            <artifactId>postgreson-core</artifactId>
+            <version>${parent.version}</version>
+        </dependency>
+        <!-- /Postgreson-core -->
+
         <!-- Dropwizard -->
         <dependency>
             <groupId>io.dropwizard</groupId>
@@ -43,10 +51,6 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-core</artifactId>
         </dependency>
         <dependency>
             <groupId>org.jdbi</groupId>

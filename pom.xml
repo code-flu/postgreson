@@ -33,9 +33,9 @@
         <jdbi3.version>3.32.0</jdbi3.version>
         <jdbi3.jackson2.version>3.29.0</jdbi3.jackson2.version>
         <postgresql.version>42.4.0</postgresql.version>
-        <flywaydb.version>6.1.1</flywaydb.version>
         <lombok.version>1.18.24</lombok.version>
         <jackson.version>2.13.3</jackson.version>
+        <guice.inject>5.1.0</guice.inject>
     </properties>
 
     <dependencyManagement>
@@ -70,11 +70,6 @@
                 <version>${postgresql.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.flywaydb</groupId>
-                <artifactId>flyway-core</artifactId>
-                <version>${flywaydb.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>org.jdbi</groupId>
                 <artifactId>jdbi3-postgres</artifactId>
                 <version>${jdbi3.version}</version>
@@ -97,7 +92,25 @@
                 <artifactId>jackson-core</artifactId>
                 <version>${jackson.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
             <!-- /Jackson -->
+
+            <!-- Guice-Inject -->
+            <dependency>
+                <groupId>com.google.inject</groupId>
+                <artifactId>guice</artifactId>
+                <version>${guice.inject}</version>
+            </dependency>
+            <!-- Guice-Inject -->
 
             <!-- Lombok -->
             <dependency>
