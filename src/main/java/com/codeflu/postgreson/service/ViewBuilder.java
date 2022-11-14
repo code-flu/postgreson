@@ -1,27 +1,26 @@
-package com.codeflu.postgreson.core;
+package com.codeflu.postgreson.service;
 
-import com.codeflu.postgreson.core.models.Column;
+
+import com.codeflu.postgreson.models.Column;
 
 import java.util.List;
 
-public class QueryBuilder {
+public class ViewBuilder {
 
-    public static String baseView(String view, List<Column> columns){
-        StringBuilder sb = new StringBuilder(String.format("CREATE OR replace VIEW public.%s \n", view));
-        return sb.append(" AS \n")
-                .append("\t SELECT \n")
-                .append(buildColumns(columns))
-                .append(" FROM public.json_b ")
-                .append(" WHERE id=")
-                .append(String.format("'%s'",view)).toString();
+    public static String build(String viewName, List<Column> columns){
+        return String.format("CREATE OR replace VIEW public.%s \n", viewName) + " AS \n" +
+                "\t SELECT \n" +
+                buildColumns(columns) +
+                " FROM public.json_b" +
+                " WHERE id=" +
+                String.format("'%s'", viewName);
     }
 
-    private static String buildColumns(List<Column> columns){
+    private static String buildColumns(List<Column> columns) {
         StringBuilder sb = new StringBuilder();
         for (Column col : columns) {
             sb.append("\t\t(json -> ")
                     .append(String.format("'%s')",col.getName()));
-
             switch (col.getType()){
                 case ARRAY:
                 case JSONB:

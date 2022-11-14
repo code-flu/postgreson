@@ -1,6 +1,5 @@
-package com.codeflu.postgreson.api.resource.dto;
+package com.codeflu.postgreson.api.dto;
 
-import com.fasterxml.jackson.databind.node.JsonNodeType;
 import lombok.Getter;
 
 @Getter

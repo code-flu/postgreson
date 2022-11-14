@@ -1,14 +1,10 @@
-package com.codeflu.postgreson.api.resource.dto;
+package com.codeflu.postgreson.api.dto;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.google.common.collect.ImmutableMap;
 import lombok.Getter;
 import org.postgresql.jdbc.PgResultSetMetaData;
 
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -17,7 +13,7 @@ public class Table {
     String table;
     List<Column> columns;
 
-    public Table(ImmutableMap<String, PgResultSetMetaData> resultSetMetaData) throws SQLException {
+    public Table(Map<String, PgResultSetMetaData> resultSetMetaData) throws SQLException {
         this.table = resultSetMetaData.keySet().iterator().next();
         this.columns = toColumns(resultSetMetaData.get(table));
     }

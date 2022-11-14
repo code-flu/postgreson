@@ -6,9 +6,9 @@ package: ## Builds package
 
 .PHONY: start_db
 start_db: ## Start Postgres DB in docker container
-	docker-compose -f api/docker-compose.yml up --remove-orphans
+	docker-compose -f docker-compose.yml up --remove-orphans
 
-.PHONY: start_api
-start_api:
+.PHONY: start_app
+start_app:
 	 set -o allexport && source local.env && \
-	 java -jar api/target/*-jar-with-dependencies.jar server api/app.config.yml
+	 java -jar target/*-jar-with-dependencies.jar server api/app.config.yml

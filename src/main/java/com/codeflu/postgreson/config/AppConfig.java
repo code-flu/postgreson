@@ -1,4 +1,4 @@
-package com.codeflu.postgreson.api.config;
+package com.codeflu.postgreson.config;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.Configuration;

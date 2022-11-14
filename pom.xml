@@ -6,13 +6,7 @@
 
     <groupId>com.codeflu</groupId>
     <artifactId>postgreson</artifactId>
-    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-
-    <modules>
-        <module>core</module>
-        <module>api</module>
-    </modules>
 
     <repositories>
         <repository>
@@ -32,97 +26,85 @@
         <dropwizard.version>2.1.1</dropwizard.version>
         <jdbi3.version>3.32.0</jdbi3.version>
         <jdbi3.jackson2.version>3.29.0</jdbi3.jackson2.version>
-        <postgresql.version>42.4.0</postgresql.version>
+        <postgresql.version>42.5.0</postgresql.version>
         <lombok.version>1.18.24</lombok.version>
         <jackson.version>2.13.3</jackson.version>
-        <guice.inject>5.1.0</guice.inject>
     </properties>
 
-    <dependencyManagement>
-        <dependencies>
-            <!-- Dropwizard -->
-            <dependency>
-                <groupId>io.dropwizard</groupId>
-                <artifactId>dropwizard-core</artifactId>
-                <version>${dropwizard.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.dropwizard</groupId>
-                <artifactId>dropwizard-views</artifactId>
-                <version>${dropwizard.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.dropwizard</groupId>
-                <artifactId>dropwizard-assets</artifactId>
-                <version>${dropwizard.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.dropwizard</groupId>
-                <artifactId>dropwizard-jdbi3</artifactId>
-                <version>${dropwizard.version}</version>
-            </dependency>
-            <!-- /Dropwizard -->
+    <dependencies>
+        <!-- Dropwizard -->
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-core</artifactId>
+            <version>${dropwizard.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-views</artifactId>
+            <version>${dropwizard.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-assets</artifactId>
+            <version>${dropwizard.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-jdbi3</artifactId>
+            <version>${dropwizard.version}</version>
+        </dependency>
+        <!-- /Dropwizard -->
 
-            <!-- db -->
-            <dependency>
-                <groupId>org.postgresql</groupId>
-                <artifactId>postgresql</artifactId>
-                <version>${postgresql.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jdbi</groupId>
-                <artifactId>jdbi3-postgres</artifactId>
-                <version>${jdbi3.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jdbi</groupId>
-                <artifactId>jdbi3-sqlobject</artifactId>
-                <version>${jdbi3.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jdbi</groupId>
-                <artifactId>jdbi3-jackson2</artifactId>
-                <version>${jdbi3.jackson2.version}</version>
-            </dependency>
-            <!-- /db -->
+        <!-- db -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jdbi</groupId>
+            <artifactId>jdbi3-postgres</artifactId>
+            <version>${jdbi3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jdbi</groupId>
+            <artifactId>jdbi3-sqlobject</artifactId>
+            <version>${jdbi3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jdbi</groupId>
+            <artifactId>jdbi3-jackson2</artifactId>
+            <version>${jdbi3.jackson2.version}</version>
+        </dependency>
+        <!-- /db -->
 
-            <!-- Jackson -->
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-core</artifactId>
-                <version>${jackson.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-databind</artifactId>
-                <version>${jackson.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-annotations</artifactId>
-                <version>${jackson.version}</version>
-            </dependency>
-            <!-- /Jackson -->
+        <!-- Jackson -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <!-- /Jackson -->
 
-            <!-- Guice-Inject -->
-            <dependency>
-                <groupId>com.google.inject</groupId>
-                <artifactId>guice</artifactId>
-                <version>${guice.inject}</version>
-            </dependency>
-            <!-- Guice-Inject -->
-
-            <!-- Lombok -->
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${lombok.version}</version>
-                <scope>compile</scope>
-            </dependency>
-            <!-- /Lombok -->
-
-        </dependencies>
-    </dependencyManagement>
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- /Lombok -->
+    </dependencies>
 
     <build>
         <plugins>

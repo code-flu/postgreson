@@ -1,8 +1,6 @@
-package com.codeflu.postgreson.core.config;
+package com.codeflu.postgreson.config;
 
-import com.codeflu.postgreson.core.dao.ViewDao;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.base.Strings;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.jdbi.v3.core.Jdbi;
@@ -24,7 +22,7 @@ public class ViewConfig {
     }
 
     // init db
-    private Jdbi initDb(DataSource dataSource){
+    private Jdbi initDb(DataSource dataSource) {
         log.info("Initializing jdbi");
         return Jdbi.create(dataSource)
                 .installPlugin(new SqlObjectPlugin())
@@ -35,9 +33,7 @@ public class ViewConfig {
 
     // create default table 'json_b'
     private void createTable() {
-        this.jdbi.withHandle((handle) -> {
-            return handle.execute("CREATE TABLE IF NOT EXISTS json_b (id VARCHAR (10) DEFAULT concat('_',substr(md5(random()::text), 24, 32)) NOT NULL, json JSONB NOT NULL, PRIMARY KEY (id))");
-        });
+        this.jdbi.withHandle((handle) -> handle.execute("CREATE TABLE IF NOT EXISTS json_b (id VARCHAR (10) DEFAULT concat(substr(md5(random()::text), 24, 32), '_') NOT NULL, json JSONB NOT NULL, PRIMARY KEY (id))"));
     }
 
     protected Jdbi getJdbi() {

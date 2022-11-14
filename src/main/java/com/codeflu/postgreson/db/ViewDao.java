@@ -1,4 +1,4 @@
-package com.codeflu.postgreson.core.dao;
+package com.codeflu.postgreson.db;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.jdbi.v3.core.mapper.RowMapper;
@@ -13,9 +13,9 @@ import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 import org.postgresql.jdbc.PgResultSetMetaData;
 
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
+@RegisterRowMapper(ViewDao.ResultSetMapper.class)
 public interface ViewDao {
 
     @SqlUpdate("INSERT INTO json_b (json) VALUES (:json)")
@@ -25,12 +25,13 @@ public interface ViewDao {
     @SqlUpdate("<view>")
     void createView(@Define("view") String view);
 
-    @SqlQuery("SELECT * FROM <view> LIMIT 1")
-    @RegisterRowMapper(ResultSetMapper.class)
+    @SqlQuery("<query>")
+    PgResultSetMetaData  query(@Define("view") String view);
+
+    @SqlQuery("SELECT * FROM public.<view> LIMIT 1")
     PgResultSetMetaData viewMeta(@Define("view") String view);
 
     class ResultSetMapper implements RowMapper<PgResultSetMetaData> {
-
         @Override
         public PgResultSetMetaData map(ResultSet rs, StatementContext ctx) throws SQLException {
             return ((PgResultSetMetaData)rs.getMetaData());
